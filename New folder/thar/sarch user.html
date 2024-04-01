@@ -1,0 +1,110 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Search</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="search-container">
+  <h2>User Search</h2>
+  <input type="text" id="search-input" placeholder="Enter username...">
+  <button id="search-button">Search</button>
+  <div id="search-results"></div>
+</div>
+<script>
+    // script.js
+document.addEventListener("DOMContentLoaded", function() {
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
+  const searchResults = document.getElementById('search-results');
+
+  searchButton.addEventListener('click', function() {
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm !== '') {
+      // Perform search (dummy data)
+      const profiles = [
+        { username: 'user1', fullName: 'User One' },
+        { username: 'user2', fullName: 'User Two' },
+        { username: 'user3', fullName: 'User Three' },
+        { username: 'user4', fullName: 'User Four' },
+        { username: 'user5', fullName: 'User Five' },
+      ];
+      const results = profiles.filter(profile => profile.username.toLowerCase().includes(searchTerm.toLowerCase()));
+      displayResults(results);
+    } else {
+      // Clear previous search results
+      searchResults.innerHTML = '';
+    }
+  });
+
+  function displayResults(results) {
+    searchResults.innerHTML = '';
+    if (results.length > 0) {
+      const ul = document.createElement('ul');
+      results.forEach(result => {
+        const li = document.createElement('li');
+        li.textContent = `${result.fullName} (${result.username})`;
+        ul.appendChild(li);
+      });
+      searchResults.appendChild(ul);
+    } else {
+      const p = document.createElement('p');
+      p.textContent = 'No results found.';
+      searchResults.appendChild(p);
+    }
+  }
+});
+
+</script>
+</body>
+<style>
+    /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#search-results {
+  margin-top: 20px;
+}
+
+</style>
+</html>

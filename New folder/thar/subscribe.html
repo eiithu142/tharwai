@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscriber Active Number Notification</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Subscriber Active Number:</h1>
+    <div id="activeNumber">0</div>
+    <button id="subscribeBtn">Subscribe</button>
+    <div id="notification"></div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Get the necessary elements
+    const activeNumberElement = document.getElementById('activeNumber');
+    const subscribeButton = document.getElementById('subscribeBtn');
+    const notificationElement = document.getElementById('notification');
+
+    // Initial subscriber count
+    let activeNumber = 0;
+
+    // Function to update the display
+    function updateDisplay() {
+        activeNumberElement.textContent = activeNumber;
+        // Display notification when active number changes
+        displayNotification();
+    }
+
+    // Function to display notification
+    function displayNotification() {
+        if (activeNumber > 0) {
+            notificationElement.textContent = `You have ${activeNumber} active subscribers.`;
+            notificationElement.style.display = 'block';
+            setTimeout(() => {
+                notificationElement.style.display = 'none';
+            }, 3000); // Hide notification after 3 seconds
+        }
+    }
+
+    // Function to handle button click
+    subscribeButton.addEventListener('click', function() {
+        activeNumber++;
+        updateDisplay();
+    });
+
+    // Update the display initially
+    updateDisplay();
+});
+</script>
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+#activeNumber {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#subscribeBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#notification {
+    display: none;
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e0f7fa;
+    border: 1px solid #26c6da;
+    border-radius: 5px;
+}
+</style>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Dream Series</title>
+</head>
+<h1>Night Dream Series</h1><hr>
+<ul>
+    <li>  <a href="index.html">HOME <i class="bi bi-house-door-fill"></i></a></li>
+    <li>
+      <a href="">Movie <i class="bi bi-chevron-double-down"></i></a>
+      <ul class="dropdown">
+          <li><a href="blseries.html"><h6>Bl Series Move</h6></a></li>
+          <li><a href="thai.html"><h6>Thaqi Series Movie</h6></a></li>
+          <li><a href="korean.html"><h6>Korean Series Movie</h6></a></li>
+          <li><a href="action.html"><h6>.Action Movie</h6></a></li>
+      </ul>
+    </li>
+    <li>
+        <a href="">About <i class="bi bi-chevron-double-down"></i></a>
+        <ul class="dropdown">
+            <li><a href=""><h6>Contact us</h6></a></li>
+            <li><a href=""><h6>Download video</h6></a></li>
+            <li><a href=""><h6>Telegram contact</h6></a></li>
+            <li><a href=""><h6></h6></a></li>
+        </ul>
+      </li>
+      
+  </ul>
+  
+  
+  <hr>
+<body>
+    <div class="comntainer">
+    <div class="img">
+        <a href="" style="color:white ;"><img src="bl3.jpg" width="160px"><h4>Night dream ep1</h4></a>
+    </div>
+    <div class="img">
+        <a href="" style="color:white  ;"><img src="bl3.jpg" width="160px"><h4>Night dream ep2</h4></a>
+    </div>
+    <div class="img">
+        <a href="" style="color:white ;"><img src="bl3.jpg" width="160px"><h4>Night dream ep3</h4></a>
+    </div>
+    
+    
+    <div class="img">
+        <a href="" style="color:white  ;"><img src="bl3.jpg" width="160px"><h4>Night dream ep4</h4></a>
+    </div>
+    <div class="img">
+        <a href="" style="color:white  ;"><img src="bl3.jpg" width="160px"><h4>Night dream ep5</h4></a>
+    </div>
+    <div class="img">
+        <a href="" style="color:white ;"><img src="bl3.jpg" width="160px"><h4>Night dream ep6</h4></a>
+    </div>
+    <div class="adss">
+        <span class="ads"><img src="ads.jpg" width="160px"><h5>Telegram number = 09458549137</h5></span>
+    </div>
+</div>
+</body>
+<style>
+    .comntainer{
+        margin-top: 20px;
+        align-items: center;
+        justify-content: center;
+        display: grid;
+        background-color: black;
+       
+        
+        
+    }
+    h4{
+        font-family: sans-serif;
+        font-size: 13px;
+    }
+    h1{
+        align-items: center;
+        justify-content: center;
+        display: grid;
+        background-color: orange;
+        height: 80px;
+    }
+    .img{
+        background-color: black;
+        align-items: center;
+        justify-content: center;
+        display: grid;
+    }
+    a{
+      
+        align-items: center;
+        justify-content: center;
+        display: grid;
+        font-size: 20px;
+    }
+    .ads{
+        height: 80px;
+        width: 160px;
+        color: aliceblue;
+    }
+    h5{
+        font-size: 11px;
+        width: 160px;
+    }
+    @media(max-width:1000px){
+      .comntainer{
+        grid-template-columns: repeat(5,350px);
+      }
+    }
+    @media(min-width:100px){
+      .comntainer{
+        grid-template-columns: repeat(2,180px);
+      }
+    }
+    @media(max-width:1000px){
+      .img{
+        grid-template-columns: repeat(5,350px);
+      }
+    }
+    @media(min-width:100px){
+      .img{
+        grid-template-columns: repeat(2,20px);
+      }
+    }
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+ul{
+    list-style: none;
+    background: gray;
+}
+ul li{
+    display: inline-block;
+    position: relative ;
+}
+ul li a{
+    display: block;
+    padding: 20px 25px;
+    color: aliceblue;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+}
+ul li ul.dropdown li {
+    display: block;
+}
+ul li ul.dropdown  {
+    display: none;
+    width: 100%;
+    background: #22438c;
+    z-index: 999;
+    position: absolute;
+}
+ul li:hover{
+background: gray;
+}
+ul li:hover ul.dropdown {
+display: block;
+}
+</style>
+</html>

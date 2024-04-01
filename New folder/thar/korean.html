@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean movie</title>
+</head>
+<h1>Korean Series Movie</h1>
+<!-- Search input field -->
+<input type="text" id="searchInput" placeholder="Search for a movie">
+
+<!-- Search button -->
+<button id="searchButton">Search</button>
+
+<!-- Container to display search results -->
+<div id="searchResults"><hr>
+<body>
+    
+    <ul>
+        <li>  <a href="index.html"><h5>HOME <i class="bi bi-house-door-fill"></i></h5></a></li>
+        <li>
+          <a href=""><h5>Movie <i class="bi bi-chevron-double-down"></i></h5></a>
+          <ul class="dropdown">
+              <li><a href="blseries.html"><h6>Bl Series Move</h6></a></li>
+              <li><a href="thai.html"><h6>Thaqi Series Movie</h6></a></li>
+              <li><a href="korean.html"><h6>Korean Series Movie</h6></a></li>
+              <li><a href="action.html"><h6>.Action Movie</h6></a></li>
+          </ul>
+        </li>
+        <li>
+            <a href=""><h5>About <i class="bi bi-chevron-double-down"></i></h5></a>
+            <ul class="dropdown">
+                <li><a href=""><h6>Contact us</h6></a></li>
+                <li><a href=""><h6>Popular Movie</h6></a></li>
+                <li><a href=""><h6>Telegram contact</h6></a></li>
+                <li><a href=""><h6></h6></a></li>
+            </ul>
+          </li>
+          
+      </ul>
+    
+      <hr>
+      <br>
+    <div class="container">
+        <div class="wrapper">
+            <a href="" style="color: aliceblue;"><img src="The School Nurse Files ( 2020 ).jpg" width="180px"><h4>The School Nurse Files ( 2020 )</h4></a>
+        </div>
+        <div class="wrapper">
+            <a href="" style="color: aliceblue;"><img src="Helpless (2012).jpg" width="180px"><h4>Helpless (2012)</h4></a>
+        </div>
+        
+        <div class="wrapper">
+            <a href="" style="color: aliceblue;"><img src="Illang The Wolf Brigade (2018).jpg" width="180px"><h4>Illang The Wolf Brigade (2018)</h4></a>
+        </div>
+        <div class="wrapper">
+            <a href="" style="color: aliceblue;"><img src="Like for Likes (2016).jpg" width="180px"><h4>Like for Likes (2016)</h4></a>
+        </div>
+        <div class="wrapper">
+            <a href="" style="color: aliceblue;"><img src="Like for Likes (2016).jpg" width="180px"><h4>Like for Likes (2016)</h4></a>
+        </div>
+        <div class="wrapper">
+            <a href="" style="color: aliceblue;"><img src="Helpless (2012).jpg" width="180px"><h4>Like for Likes (2016)</h4></a>
+        </div>
+    </div>
+</div>
+</body>
+<style>
+    h1{
+        height: 80px;
+        align-items: center;
+        justify-content: center;
+        display: grid;
+        background-color: blanchedalmond;
+    }
+    .all{
+        width:auto;
+        font-size: 6px;
+        border: 1px solid black;
+    }
+    .container{
+       
+        align-items: center;
+        justify-content: center;
+        display: grid;
+        background-color: black;
+    }
+    h4{
+        font-size: 12px;
+    }
+    .wrapper{
+        margin-top: 20px;
+    }
+    @media(max-width:1000px){
+      .containerer{
+        grid-template-columns: repeat(5,350px);
+      }
+    }
+    @media(min-width:100px){
+      .container{
+        grid-template-columns: repeat(2,180px);
+      }
+    }
+    @media(max-width:1000px){
+      .wrapper{
+        grid-template-columns: repeat(5,350px);
+      }
+    }
+    @media(min-width:100px){
+      .wrapper{
+        grid-template-columns: repeat(2,110px);
+      }
+    }
+   
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+ul{
+    list-style: none;
+    background: gray;
+}
+ul li{
+    display: inline-block;
+    position: relative ;
+}
+ul li a{
+    display: block;
+    padding: 20px 25px;
+    color: aliceblue;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+}
+ul li ul.dropdown li {
+    display: block;
+}
+ul li ul.dropdown  {
+    display: none;
+    width: 100%;
+    background: #22438c;
+    z-index: 999;
+    position: absolute;
+}
+ul li:hover{
+background: gray;
+}
+ul li:hover ul.dropdown {
+display: block;
+}
+</style>
+<script>
+    // Function to perform search
+    function searchMovies() {
+      // Get the value entered in the search input
+      var searchTerm = document.getElementById("searchInput").value;
+      
+      // Here, you can perform your search logic, such as fetching data from a database or an API
+      
+      // For demonstration, let's use sample movie data
+      var movieData = [
+        { name: "Movie 1", imageUrl: "thai1.jpg" ,imageSrc:"thai1.jpg"},
+        { name: "Movie 2", imageUrl: "thai1.jpg" },
+        { name: "Movie 3", imageUrl: "thai1.jpg" }
+      ];
+  
+      // Clear previous search results
+      var searchResultsContainer = document.getElementById("searchResults");
+      searchResultsContainer.innerHTML = "";
+  
+      // Display search results
+      movieData.forEach(function(movie) {
+        // Create a container for each search result
+        var searchResultContainer = document.createElement("div");
+        searchResultContainer.classList.add("searchResult");
+  
+        // Create an element for the movie name
+        var movieNameElement = document.createElement("p");
+        movieNameElement.classList.add("movieName");
+        movieNameElement.textContent = movie.name;
+  
+        // Create an image element for the movie poster
+        var movieImageElement = document.createElement("img");
+        movieImageElement.classList.add("movieImage");
+        movieImageElement.src = movie.imageUrl;
+        movieImageElement.href = movie.imgSrc;
+        movieImageElement.alt = movie.name;
+        movieImageElement.width = "100"; // Set width to 100 pixels
+  
+        // Create a delete button
+        var deleteButton = document.createElement("button");
+        deleteButton.classList.add("deleteButton");
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", function() {
+          // Remove the search result container when delete button is clicked
+          searchResultsContainer.removeChild(searchResultContainer);
+        });
+  
+        // Append the movie name, image, and delete button to the search result container
+        searchResultContainer.appendChild(movieNameElement);
+        searchResultContainer.appendChild(movieImageElement);
+        searchResultContainer.appendChild(deleteButton);
+  
+        // Append the search result container to the search results container
+        searchResultsContainer.appendChild(searchResultContainer);
+      });
+    }
+  
+    // Event listener for the search button
+    document.getElementById("searchButton").addEventListener("click", function() {
+      // Call the search function when the button is clicked
+      searchMovies("");
+    });
+  </script>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat App</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>Chat</h2>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <!-- Messages will be displayed here -->
+  </div>
+  <div class="container">
+    <div class="wrapper">
+        <div class="image">
+            <img src="" alt="" >
+        </div>
+       <div class="content">
+        <div class="icon"></div>
+       <div class="text"></div>
+    
+   
+    </div>
+
+   
+   <div class="file-name"></div>
+</div>
+
+<input type="file" id="default-btn" hidden>
+<button onclick="defaultBtnActive()" id="custom-btn"><i class="bi bi-images"></i></button>
+</div>
+
+  <div class="chat-input">
+    <input type="text" id="message-input" placeholder="Type your message...">
+    <input type="file" id="photo-input" hidden>
+    <button id="send-button">Send</button>
+  </div>
+</div>
+<script>
+    // script.js
+document.addEventListener("DOMContentLoaded", function() {
+  const messagesContainer = document.getElementById('chat-messages');
+  const messageInput = document.getElementById('message-input');
+  const photoInput = document.getElementById('photo-input');
+  const sendButton = document.getElementById('send-button');
+  
+    
+
+  sendButton.addEventListener('click', sendMessage);
+
+  function sendMessage() {
+    const message = messageInput.value.trim();
+    const photo = photoInput.files[0];
+    if (message !== '' || photo) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message', 'sent');
+      if (message !== '') {
+        messageElement.textContent = message;
+      } else {
+        const photoElement = document.createElement('img');
+        photoElement.src = URL.createObjectURL(photo);
+        messageElement.appendChild(photoElement);
+      }
+      messagesContainer.appendChild(messageElement);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      messageInput.value = '';
+      photoInput.value = '';
+    }
+  }
+});
+
+const defaultBtn = document.querySelector("#default-btn")
+    const customBtn =document.querySelector("#custom-btn")
+    const img = document.querySelector("img");
+    function defaultBtnActive() {
+        defaultBtn.click();
+    }
+    defaultBtn.addEventListener("change",function(){
+         const file = this.files[0];
+       if (file){
+        const reader = new FileReader();
+        reader.onload = function(){
+            const result = reader.result;
+            img.src = result;
+        }
+        reader.readAsDataURL(file);
+
+       }
+      });
+</script>
+
+</body>
+<style>
+    /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-container {
+  max-width: 400px;
+  margin: 50px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.chat-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.chat-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.message {
+  background-color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+
+.sent {
+  background-color:white;
+  color:blackss;
+  text-align: right;
+}
+
+.received {
+    color: black;
+  background-color: #ddd;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+}
+
+input[type="text"], input[type="file"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+#photo-input{
+    width: 80%;
+}
+</style>
+</html>

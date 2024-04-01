@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        width: 300px;
+        margin: 0 auto;
+    }
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 15px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    button:hover {
+        opacity: 0.8;
+    }
+    
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Signup Form</h2>
+    <form id="signupForm">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" id="uname" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" id="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="psw" required>
+
+        <button onclick="signup()">Signup</button>
+    </form>
+</div>
+
+<script>
+   function signup() {
+        var username = document.getElementById('uname').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('psw').value;
+
+        // Here, you would typically perform validation and send the data to a server for signup process
+        // For demonstration purposes, let's just display the entered data in the console
+        console.log("Username: " + username);
+        console.log("Email: " + email);
+        console.log("Password: " + password);
+         // For simplicity, let's just alert the username and password
+         alert("Username: " + username + "\nPassword: " + password );
+        
+        // You can redirect the user to another page after successful login
+        window.location.href = "index.html";
+
+    }
+        
+
+
+   
+</script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="post-container">
+  <div class="post-options">
+    <input type="text" id="username-input" placeholder="Username or ID">
+    <input type="file" id="media-input" accept="image/*, video/*">
+    <textarea id="post-text" placeholder="Write something..."></textarea>
+    <button id="post-button">Post</button>
+  </div>
+  <div class="post-list" id="post-list">
+    
+    <!-- Posts will be displayed here -->
+  </div>
+</div>
+<span id="like-count">0</span>
+<script>
+    // script.js
+document.addEventListener("DOMContentLoaded", function() {
+  const usernameInput = document.getElementById('username-input');
+  const mediaInput = document.getElementById('media-input');
+  const postText = document.getElementById('post-text');
+  const postButton = document.getElementById('post-button');
+  const postList = document.getElementById('post-list');
+
+  postButton.addEventListener('click', function() {
+    const username = usernameInput.value.trim();
+    const postContent = postText.value.trim();
+    const file = mediaInput.files[0];
+    if (username !== '' && (postContent !== '' || file)) {
+      // Create post item
+      const postItem = document.createElement('div');
+      postItem.classList.add('post-item');
+      
+      // Username or ID
+      const usernameElement = document.createElement('div');
+      usernameElement.textContent = `Username or ID: ${username}`;
+      postItem.appendChild(usernameElement);
+
+      // Post content
+      const postContentDiv = document.createElement('div');
+      postContentDiv.innerHTML = sanitize(postContent);
+      postItem.appendChild(postContentDiv);
+
+      // Display media if available
+      if (file) {
+        const mediaType = file.type.split('/')[0]; // 'image' or 'video'
+        if (mediaType === 'image') {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.style.maxWidth = '100%';
+          postItem.appendChild(img);
+        } else if (mediaType === 'video') {
+          const video = document.createElement('video');
+          video.src = URL.createObjectURL(file);
+          video.controls = true;
+          video.style.maxWidth = '100%';
+          postItem.appendChild(video);
+        }
+      }
+
+      // Add post actions
+      const postActions = document.createElement('div');
+      postActions.classList.add('post-actions');
+      const likeButton = document.createElement('button');
+      const likeCount = document.getElementById('like-count');
+      let count = 0;
+      likeButton.textContent = 'Like';
+      likeButton.addEventListener('click', function() {
+    count++;
+    likeCount.textContent = count;
+  });
+     
+      const commentButton = document.createElement('button');
+      commentButton.textContent = 'Comment';
+      commentButton.addEventListener('click', function() {
+        showCommentForm(postItem);
+      });
+      const shareButton = document.createElement('button');
+      shareButton.textContent = 'Share';
+      shareButton.addEventListener('click', function() {
+        alert('Shared!');
+      });
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', function() {
+        postItem.remove();
+      });
+      postActions.appendChild(likeButton);
+      postActions.appendChild(commentButton);
+      postActions.appendChild(shareButton);
+      postActions.appendChild(deleteButton);
+      postItem.appendChild(postActions);
+
+      // Add post item to list
+      postList.appendChild(postItem);
+
+      // Reset input fields
+      usernameInput.value = '';
+      postText.value = '';
+      mediaInput.value = '';
+    } else {
+      alert('Please enter a username and something to post.');
+    }
+  });
+
+  function showCommentForm(postItem) {
+    const commentForm = document.createElement('div');
+    const commentInput = document.createElement('textarea');
+    commentInput.placeholder = 'Write a comment...';
+    const commentButton = document.createElement('button');
+    commentButton.textContent = 'Post Comment';
+    commentButton.addEventListener('click', function() {
+      postComment(postItem, commentInput.value.trim());
+    });
+    commentForm.appendChild(commentInput);
+    commentForm.appendChild(commentButton);
+    postItem.appendChild(commentForm);
+  }
+
+  function postComment(postItem, commentContent) {
+    if (commentContent !== '') {
+      const commentItem = document.createElement('div');
+      commentItem.classList.add('comment-item');
+      commentItem.textContent = commentContent;
+      postItem.appendChild(commentItem);
+    } else {
+      alert('Please enter a comment.');
+    }
+  }
+
+  function sanitize(text) {
+    // Convert special characters to HTML entities
+    return text.replace(/[&<>"'`=\/]/g, function(s) {
+      return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;", "`": "&#x60;", "=": "&#x3D;", "/": "&#x2F;"}[s];
+    });
+  }
+});
+
+</script>
+</body>
+<style>
+    /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.post-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.post-options input[type="text"], .post-options input[type="file"], .post-options textarea {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.post-options button, .comment-actions button, .post-actions button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  font-size: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-options button:hover, .comment-actions button:hover, .post-actions button:hover {
+  background-color: #0056b3;
+}
+
+.post-list {
+  margin-top: 20px;
+}
+
+.post-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.post-actions {
+  margin-top: 10px;
+}
+
+.comment-item {
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+</style>
+</html>

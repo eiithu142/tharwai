@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Website</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Movie Website</h1>
+</header>
+<main>
+    <section id="moviePlayer">
+        <video id="videoPlayer" controls>
+            <source src="movie.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="controls">
+            <button id="playPauseBtn">Play/Pause</button>
+            <input type="range" id="volumeRange" min="0" max="1" step="0.1" value="1">
+        </div>
+    </section>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const videoPlayer = document.getElementById('videoPlayer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const volumeRange = document.getElementById('volumeRange');
+
+    playPauseBtn.addEventListener('click', function() {
+        if (videoPlayer.paused) {
+            videoPlayer.play();
+            playPauseBtn.textContent = 'Pause';
+        } else {
+            videoPlayer.pause();
+            playPauseBtn.textContent = 'Play';
+        }
+    });
+
+    volumeRange.addEventListener('input', function() {
+        videoPlayer.volume = parseFloat(volumeRange.value);
+    });
+});
+</script>
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+}
+
+#moviePlayer {
+    text-align: center;
+}
+
+#videoPlayer {
+    width: 80%;
+}
+
+#controls {
+    margin-top: 20px;
+}
+
+input[type="range"] {
+    width: 150px;
+}
+</style>
+</html>

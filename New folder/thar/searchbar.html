@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Search</title>
+  <style>
+    /* Some basic styling for the search bar */
+    #searchInput {
+        border-radius: 10px;
+      padding: 10px;
+      width: 150pxpx;
+      font-size: 10px;
+    }
+    #searchButton {
+        border-radius: 10px;
+      padding: 10px;
+      font-size: 10px;
+    }
+    .searchResult {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .movieName {
+        color: aliceblue;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .movieImage {
+      width: 100px;
+      height: auto;
+    }
+    .deleteButton {
+      padding: 5px 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    #refreshButton {
+        border-radius: 10px;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 6px;
+    }
+    .notification {
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+    }
+    #subscribeButton {
+        margin-bottom: 10px;
+         border-radius: 10px;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 10px;
+      margin-left: 80%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Subscriber bell -->
+<button id="subscribeButton">Subscribe</button>
+
+<!-- Search input field -->
+<input type="text" id="searchInput" placeholder="Search for a movie" required>
+
+<!-- Search button -->
+<button id="searchButton">Search</button>
+
+<!-- Container to display search results -->
+<div id="searchResults"></div>
+
+<!-- Refresh button -->
+<button id="refreshButton">Refresh All</button>
+
+<!-- Notification area -->
+<div id="notificationArea"></div>
+
+<script>
+  // Function to perform search
+  function searchMovies() {
+    // Get the value entered in the search input
+    var searchTerm = document.getElementById("searchInput").value;
+
+    // Check if the search input is empty
+    if (!searchTerm) {
+      alert("Please enter a search term");
+      return;
+    }
+
+    // Here, you can perform your search logic, such as fetching data from a database or an API
+    
+    // For demonstration, let's use sample movie data
+    var movieData = [
+      { name: "Movie 1", imageUrl: "https://via.placeholder.com/150" },
+      { name: "Movie 2", imageUrl: "https://via.placeholder.com/150" },
+      { name: "Movie 3", imageUrl: "https://via.placeholder.com/150" }
+    ];
+
+    // Clear previous search results
+    var searchResultsContainer = document.getElementById("searchResults");
+    searchResultsContainer.innerHTML = "";
+
+    // Display search results
+    movieData.forEach(function(movie) {
+      // Create a container for each search result
+      var searchResultContainer = document.createElement("div");
+      searchResultContainer.classList.add("searchResult");
+
+      // Create an element for the movie name
+      var movieNameElement = document.createElement("p");
+      movieNameElement.classList.add("movieName");
+      movieNameElement.textContent = movie.name;
+
+      // Create an image element for the movie poster
+      var movieImageElement = document.createElement("img");
+      movieImageElement.classList.add("movieImage");
+      movieImageElement.src = movie.imageUrl;
+      movieImageElement.alt = movie.name;
+      movieImageElement.width = "100"; // Set width to 100 pixels
+
+      // Create a delete button
+      var deleteButton = document.createElement("button");
+      deleteButton.classList.add("deleteButton");
+      deleteButton.textContent = "Delete";
+      deleteButton.addEventListener("click", function() {
+        // Remove the search result container when delete button is clicked
+        searchResultsContainer.removeChild(searchResultContainer);
+        // Show notification for deletion
+        showNotification("Search result deleted: " + movie.name);
+      });
+
+      // Append the movie name, image, and delete button to the search result container
+      searchResultContainer.appendChild(movieNameElement);
+      searchResultContainer.appendChild(movieImageElement);
+      searchResultContainer.appendChild(deleteButton);
+
+      // Append the search result container to the search results container
+      searchResultsContainer.appendChild(searchResultContainer);
+      // Show notification for addition
+      showNotification("New search result added: " + movie.name);
+    });
+  }
+
+  // Function to refresh all search results
+  function refreshResults() {
+    // Clear the search input
+    document.getElementById("searchInput").value = "";
+
+    // Clear the search results
+    var searchResultsContainer = document.getElementById("searchResults");
+    searchResultsContainer.innerHTML = "";
+    // Show notification for refresh
+    showNotification("All search results refreshed");
+  }
+
+  // Function to show notification
+  function showNotification(message) {
+    var notificationArea = document.getElementById("notificationArea");
+    var notificationElement = document.createElement("div");
+    notificationElement.classList.add("notification");
+    notificationElement.textContent = message;
+    notificationArea.appendChild(notificationElement);
+    // Automatically remove the notification after 3 seconds
+    setTimeout(function() {
+      notificationArea.removeChild(notificationElement);
+    }, 3000);
+  }
+
+  // Event listener for the search button
+  document.getElementById("searchButton").addEventListener("click", function() {
+    // Call the search function when the button is clicked
+    searchMovies();
+  });
+
+  // Event listener for the refresh button
+  document.getElementById("refreshButton").addEventListener("click", function() {
+    // Call the refresh function when the button is clicked
+    refreshResults();
+  });
+
+  // Event listener for the subscribe button
+  document.getElementById("subscribeButton").addEventListener("click", function() {
+    // Implement your subscribe functionality here
+    alert("Thank you for subscribing!");
+  });
+</script>
+
+</body>
+</html>

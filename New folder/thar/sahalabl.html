@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahala</title>
+</head>
+
+<div class="container1">
+    <h1>Mr Sahala & Toko Kun</h1>
+    <button id="increaseBtn" style="font-size: 10px;"><i class="bi bi-suit-heart-fill"></i> Subscribe</button>
+    <div id="activeNumber" style="font-size: 10px">0</div>
+    
+    <button id="decreaseBtn"hidden>Decrease</button>
+</div><hr>
+<ul>
+    <li>  <a href="index.html">HOME <i class="bi bi-house-door-fill"></i></a></li>
+    <li>
+      <a href="">Movie <i class="bi bi-chevron-double-down"></i></a>
+      <ul class="dropdown">
+          <li><a href="blseries.html"><h6>Bl Series Move</h6></a></li>
+          <li><a href="thai.html"><h6>Thaqi Series Movie</h6></a></li>
+          <li><a href="korean.html"><h6>Korean Series Movie</h6></a></li>
+          <li><a href="action.html"><h6>.Action Movie</h6></a></li>
+      </ul>
+    </li>
+    <li>
+        <a href="">About <i class="bi bi-chevron-double-down"></i></a>
+        <ul class="dropdown">
+            <li><a href=""><h6>Contact us</h6></a></li>
+            <li><a href=""><h6>Popular Movie</h6></a></li>
+            <li><a href=""><h6>Telegram contact</h6></a></li>
+            <li><a href=""><h6></h6></a></li>
+        </ul>
+      </li>
+      
+  </ul>
+  
+  
+  <hr>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <a href="https://t.me/moviecd69/39" style="color:white;"><img src="bl1.jpg" width="160px"><h4>Episode (1)</h4></a>
+        </div>
+        <div class="wrapper">
+            <a href="https://t.me/moviecd69/40" style="color:white;"><img src="bl1.jpg" width="160px"><h4>Episode (2)</h4></a>
+        </div>
+        <div class="wrapper">
+            <a href="https://t.me/moviecd69/41" style="color:white;"><img src="bl1.jpg" width="160px"><h4>Episode (3)</h4></a>
+        </div>
+       
+        <div class="wrapper">
+            <a href="https://t.me/moviecd69/42" style="color:white;"><img src="bl1.jpg" width="160px"><h4>Episode (4)</h4></a>
+        </div>
+       
+        <div class="wrapper">
+            <a href="https://t.me/moviecd69/43" style="color:white;"><img src="bl1.jpg" width="160px"><h4>Episode (5)</h4></a>
+        </div>
+        <div class="wrapper">
+            <a href="https://t.me/moviecd69/44" style="color:white;"><img src="bl1.jpg" width="160px"><h4>Episode (6)</h4></a>
+        </div>
+        <div class="adss">
+            <span class="ads"><img src="adss.jpg" width="180%"><h4>Telegram number = 09458549137</h4></span>
+        </div>
+    </div>
+   
+</body>
+<style>
+    
+#activeNumber{
+    font-size: 10px;
+    margin-right: 10px;
+    margin-top: 18px;
+    color: aliceblue;
+    
+   
+}
+
+#increaseBtn {
+   background-color: red;
+   border-radius: 18px;
+
+    
+}
+h1{
+    font-size: 20px;
+    color: aliceblue;
+}
+.increaseBtn .hover{
+    background-color: aqua;
+}
+
+#activeNumber {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+    
+    .container1{
+        background-color: black;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        
+       
+    }
+    .wrapper{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    gap: 30;
+    
+   
+
+   }
+   @media(max-width:1000px){
+      .container{
+        grid-template-columns: repeat(5,350px);
+      }
+    }
+    @media(min-width:100px){
+      .container{
+        grid-template-columns: repeat(2,180px);
+      }
+    }
+    @media(max-width:1000px){
+      .wrapper{
+        grid-template-columns: repeat(5,350px);
+      }
+    }
+    @media(min-width:100px){
+      .wrapper{
+        grid-template-columns: repeat(2,110px);
+      }
+    }
+    
+    .ads{
+        color: aliceblue;
+    }
+    h4{
+        font-size: 12px;
+    }
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+ul{
+    list-style: none;
+    background: gray;
+}
+ul li{
+    display: inline-block;
+    position: relative ;
+}
+ul li a{
+    display: block;
+    padding: 20px 25px;
+    color: aliceblue;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+}
+ul li ul.dropdown li {
+    display: block;
+}
+ul li ul.dropdown  {
+    display: none;
+    width: 100%;
+    background: #22438c;
+    z-index: 999;
+    position: absolute;
+}
+ul li:hover{
+background: gray;
+}
+ul li:hover ul.dropdown {
+display: block;
+}
+</style>
+<script>
+     document.addEventListener('DOMContentLoaded', function() {
+    // Get the necessary elements
+    const activeNumberElement = document.getElementById('activeNumber');
+    const increaseButton = document.getElementById('increaseBtn');
+    const decreaseButton = document.getElementById('decreaseBtn');
+
+    // Initial subscriber count
+    let activeNumber = 120;
+
+    // Function to update the display
+    function updateDisplay() {
+        activeNumberElement.textContent = activeNumber;
+    }
+
+    // Function to handle increase button click
+    increaseButton.addEventListener('click', function() {
+        activeNumber++;
+        updateDisplay();
+    });
+
+    // Function to handle decrease button click
+    decreaseButton.addEventListener('click', function() {
+        if (activeNumber > 0) {
+            activeNumber--;
+            
+        }
+    });
+
+    // Update the display initially
+    updateDisplay("activeNumber");
+});
+</script>
+</html>
